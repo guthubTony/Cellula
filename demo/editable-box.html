@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://tools.alipay.im/shanghai/demo/cellula/scenes/itemList/itemList.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>ItemList</title>
+    <link type="text/css" media="screen" charset="utf-8" rel="stylesheet" href="css/base.css">
+         <style type="text/css">
+         .container {
+             padding: 20px;
+         }
+
+         /*
+          * common use image
+          */
+         .title-icon {
+             background-image: url("https://i.alipayobjects.com/e/201307/jz3FLxFQ5_src.png");
+             background-repeat: no-repeat;
+         }
+         .myapp-edit, .myapp-link {
+             background-image: url("https://i.alipayobjects.com/e/201307/mgA7yrWlp.png");
+             background-repeat: no-repeat;
+             background-position: 0 0;
+         }
+         .myapp-package {
+              width: 221px;
+              float: left;
+              margin: 18px 20px 0 0;
+              position: relative;
+              border: 1px solid #ddd;
+          }
+          .myapp-layer {
+
+          }
+          .myapp-layer-hover {
+              position: relative;
+              margin: -2px -1px -1px;
+              background-color: #fafafa;
+              border: 1px solid #fab700;
+              width: 221px;
+              z-index: 9;
+              overflow: hidden;
+          }
+          .myapp-title {
+              padding: 0 4px;
+              position: relative;
+          }
+          .myapp-inner-title {
+              height: 80px;
+              border-bottom: 1px dashed #ddd;
+          }
+
+          .title-icon {
+              width: 43px;
+              height: 42px;
+              float: left;
+              overflow: hidden;
+              margin: 20px 0 0 20px;
+          }
+          .more-product-icon {
+              background-position: -159px -156px;
+          }
+          .title-text {
+              float: left;
+              margin: 18px 0 0 13px;
+          }
+         .title-text strong, .title-text em {
+             display: block;
+         }
+         .title-text strong {
+             color: #000;
+             font-size: 16px;
+         }
+         .title-text em {
+             color: #a6a6a6;
+         }
+         a.myapp-edit {
+             width: 30px;
+             height: 30px;
+             overflow: hidden;
+             position: absolute;
+             top: 10px;
+             right: 10px;
+             text-indent: -99px;
+         }
+         a.myapp-edit:hover {
+             outline: 1px solid #ccc;
+         }
+          .myapp-edit-icon {
+              background-position: 0 -1px;
+          }
+          .myapp-container {
+              position: relative;
+              width: 221px;
+              overflow: hidden;
+          }
+          .myapp-container-scroller {
+              top: 0;
+              left: 0;
+              width: 9999px;
+              overflow: hidden;
+              position: relative;
+          }
+          .myapp-container-slider {
+              float: left;
+              width: 221px;
+              padding: 10px 0;
+              overflow: hidden;
+          }
+           .myapp-item {
+               margin-bottom: 4px;
+           }
+          .myapp-link {
+              font-size: 14px;
+              color: #08c;
+              height: 30px;
+              line-height: 30px;
+              padding-left: 10px;
+              margin-left: 60px;
+              display: inline-block;
+              background-position: -206px -71px;
+          }
+         </style>
+</head>
+<body>
+
+<div class="container" id="J-container">
+     <!--
+    <div class="myapp-package fn-clear">
+        <div class="myapp-layer">
+             <div class="myapp-title">
+                <h1 class="myapp-inner-title">
+                    <span class="title-icon more-product-icon"></span>
+                    <span class="title-text">
+                        <strong>更多应用</strong>
+                        <em>为您考虑、更周全</em>
+                    </span>
+                </h1>
+                <a href="javascript:;" class="myapp-edit myapp-edit-icon ">可编辑</a>
+             </div>
+             <div class="myapp-container">
+                <div class="myapp-container-scroller" style="width: 442px; left: 0">
+                    <ul class="myapp-container-slider">
+                        <li class="myapp-item" appkey="50008">
+                            <a href="#" class="myapp-link">提现</a>
+                        </li>
+                        <li class="myapp-item" appkey="1996">
+                            <a href="#" class="myapp-link" title="企业版内部转账11">企业版内部转账...</a>
+                        </li>
+                        <li class="myapp-item" appkey="245">
+                            <a href="#" class="myapp-link" title="默认展示的快捷应用">默认展示的快捷...</a>
+                        </li>
+                    </ul>
+                    <ul class="myapp-container-slider">
+                        <li class="myapp-item" appkey="99991">
+                            <a href="#" class="myapp-link">sc001</a>
+                        </li>
+                        <li class="myapp-item" appkey="99991">
+                            <a href="#" class="myapp-link">sc002</a>
+                        </li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    -->
+
+</div>
+
+<script type="text/javascript" src="../lib/base/jQuery-1.7.2.js"></script>
+<script type="text/javascript" src="../lib/base/cellula.js"></script>
+<script type="text/javascript" src="../lib/base/class.js"></script>
+<script type="text/javascript" src="../lib/base/util.js"></script>
+<script type="text/javascript" src="../lib/base/events.js"></script>
+<script type="text/javascript" src="../lib/base/message.js"></script>
+<script type="text/javascript" src="../lib/base/cell.js"></script>
+<script type="text/javascript" src="../lib/base/element.js"></script>
+<script type="text/javascript" src="../lib/base/collection.js"></script>
+<script type="text/javascript" src="js/editable-box.js"></script>
+
+<script type="text/javascript">
+
+    var myAppJson = [
+        {
+            "myappTitle": "更多应用",
+            "myappTitleExplain": "为您考虑、更周全",
+            "isEdit": true,
+            "myappItem": [{
+                "appkey": '5008',
+                "icon": '111.png',
+                "link": '#',
+                "text": '企业版内部转账11'
+            }, {
+                "appkey": '5009',
+                "icon": '222.png',
+                "link": '#',
+                "text": '提现222'
+            }]
+        },
+        {
+            "myappTitle": "更多应用333333",
+            "myappTitleExplain": "为您考虑、更周全33344",
+            "isEdit": false,
+            "myappItem": [{
+                "appkey": '3007',
+                "icon": '111.png',
+                "link": '#',
+                "text": '企业版内部转账2222211'
+            }, {
+                "appkey": '3008',
+                "icon": '222.png',
+                "link": '#',
+                "text": '提现2222222'
+            }]
+        }
+    ];
+
+    (function(c) {
+        var util = c._util, Class = c.Class, Coll = c.Collection;
+        // app数据
+        var MyAppItemElement = new Class('MyAppItemElement', {
+            init: function(conf) {
+                this._super(conf);
+                this.set({
+                    appkey: conf.appkey,
+                    icon: conf.icon,
+                    text: conf.text,
+                    textMaxLen: 18,
+                    link: conf.link,
+                    wrapCls: 'myapp-item',
+                    cls: 'myapp-link',
+                    editCls: ''
+
+                });
+
+            }
+        }).inherits(c.Element);
+
+        //myapp item
+        var MyAppItem = new Class('myAppItem', {
+            appItemElement: undefined,  // 数据集
+            init: function(conf, data) {
+                if(!this.key) this.key = this.__cid__;
+                if(!util.isObject(conf) || util.isEmpty(conf)) return;
+                this._super(conf);
+                // util.log(data);
+                this.appItemElement = new MyAppItemElement(data);
+                this.rootNode = this.rootNode || this._createItem();
+                //util.log(this.rootNode);
+            },
+            _createItem: function() {
+                var _tpl = '<li class="$-{wrapCls}" appkey="$-{appkey}"><a href="$-{link}" class="$-{cls}">$-{text}</a></li>';
+                return jQuery( util.makeTpl(_tpl, {
+                    wrapCls: this.appItemElement.get("wrapCls"),
+                    appkey: this.appItemElement.get("appkey"),
+                    link: this.appItemElement.get("link"),
+                    cls: this.appItemElement.get("cls"),
+                    text: this.appItemElement.get("text")
+                }) );
+            },
+            render: function() {
+                console.log('render...item..')
+            },
+            receiver: function(e) {
+                if(!e) return;
+                var targ = e.target, evt = e.name.split(':')[1];
+                switch (evt) {
+                    case 'RENDER':
+                        this.render();
+                        break;
+                }
+            }
+
+        }).inherits(c.Cell);
+
+        // MyAppListElement 数据集
+        var MyAppListElement = new Class('MyAppListElement', {
+            init: function(conf) {
+                this._super();
+                this.set({
+                    title: conf.myappTitle,
+                    titleExplain: conf.myappTitleExplain,
+                    isEdit: conf.isEdit
+                });
+                //util.log(this.title);
+                //this.storage.toStorage(["title", "titleExplain"]);
+                //util.log(this._data)
+            }
+        }).inherits(c.Element);
+
+        var MyAppList = new Class('MyAppList', {
+            collection: undefined,
+            myAppItem: undefined,
+            appListElement: undefined, // 数据
+            init: function(conf, data) {
+                if(!this.key) this.key = this.__cid__;
+                if(!util.isObject(conf) || util.isEmpty(conf)) return;
+                this._super(conf);
+                this.appListElement = new MyAppListElement(data);
+                this.rootNode = this.rootNode || this._createList();
+                // util.log(this.rootNode);
+                this.collection = new Coll({ type: this.myAppItem });
+                // 获取 appItem 数据
+                var appItems = this._getAppItem(data);
+                this._createMyAppItem( appItems );
+                //this.emit('MyAppList:RENDER');
+            },
+            isEdit: function() {
+                var edit = jQuery('<a href="javascript:;" class="myapp-edit myapp-edit-icon">可编辑</a>');
+                if(this.appListElement.get('isEdit')) {
+                    jQuery('.myapp-title', this.rootNode).append(edit);
+                    edit.click(function() {
+                        console.log('edit...edit..');
+                    });
+                }
+            },
+            edit: function() {
+                // 通知 appItem
+            },
+            // 获取 myappItem 数据
+            _getAppItem: function(obj) {
+                return (obj && obj.myappItem) || [];
+            },
+            addMyAppItem: function(item) {
+                item.follow(this);
+                this.collection.push(item);
+            },
+            // 构建 MyAppItem
+            _createMyAppItem: function(items) {
+                var _myAppItem;
+                util.each(items, function(obj) {
+                    _myAppItem = new this.myAppItem({
+                        key: 'MyAppItem'
+                    }, obj);
+                    this.addMyAppItem(_myAppItem);
+                }, this);
+            },
+            _createList: function() {
+                var _tpl = '<div class="myapp-package fn-clear">' +
+                           '<div class="myapp-layer">' +
+                           '<div class="myapp-title">' +
+                           '<h1 class="myapp-inner-title">' +
+                           '<span class="title-icon more-product-icon"></span>' +
+                           '<span class="title-text">' +
+                           '<strong>$-{title}</strong>' +
+                           '<em>$-{titleExplain}</em>' +
+                           '</span>' +
+                           '</h1>' +
+                           //'<a href="javascript:;" class="myapp-edit myapp-edit-icon">可编辑</a>' +
+                           '</div>' +
+                           '<div class="myapp-container">' +
+                           '<div class="myapp-container-scroller">' +
+                           '</div>' +
+                           '</div>' +
+                           '</div>' +
+                           '</div>';
+
+                return jQuery( util.makeTpl(_tpl, {
+                    title: this.appListElement.get("title"),
+                    titleExplain: this.appListElement.get("titleExplain")
+                }) );
+            },
+            render: function() {
+                jQuery('#J-container').append(this.rootNode);
+                this.isEdit();
+            },
+            receiver: function(e) {
+                if(!e) return;
+                var targ = e.target, evt = e.name.split(':')[1];
+                switch (evt) {
+                    case 'RENDER':
+                        this.render();
+                        break;
+                }
+            }
+        }).inherits(c.Cell);
+
+        var MyApp = new Class('MyApp', {
+            myAppItem: undefined,
+            myAppList: undefined,  // 我的应用列表
+            collectioin: undefined,
+            myAppJson: undefined,
+            init: function(conf) {
+                if(!util.isObject(conf) || util.isEmpty(conf)) return;
+                this._super(conf);
+                this.collectioin = new Coll({type: this.myAppList});
+                this._createMyAppList();
+                this.render();
+            },
+            // 渲染MyApp
+            render: function() {
+                this.emit('MyApp:RENDER');
+            },
+            _createMyAppList: function() {
+                var appList;
+                util.each(this.myAppJson, function(obj) {
+                    // 构造 myAppList
+                    appList = new this.myAppList({
+                        key: 'MyAppList',
+                        myAppItem: this.myAppItem
+                    }, obj);
+                    this.addMyAppList(appList);
+                }, this);
+            },
+            addMyAppList: function(item) {
+                item.follow(this);
+                this.collectioin.push(item);
+            }
+        }).inherits(c.Cell);
+
+        c.MyApp = MyApp;
+        c.MyAppList = MyAppList;
+        c.MyAppItem = MyAppItem;
+
+    })(Cellula);
+
+    var MyApp = new Cellula.MyApp({
+        key: 'MyApp',
+        myAppJson: myAppJson,
+        myAppList: Cellula.MyAppList,
+        myAppItem: Cellula.MyAppItem
+    });
+
+
+</script>
+
+</body>
+
+</html>
